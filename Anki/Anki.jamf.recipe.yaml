@@ -1,0 +1,14 @@
+Description: Uploads latest Anki package
+Identifier: net.wra.technology.autopkg.jamf.Anki
+ParentRecipe: net.wra.technology.autopkg.download.Anki
+MinumumVersion: '2.3'
+
+Input:
+  NAME: Anki
+  UPDATE_PREDICATE: pkg_uploaded == False
+
+Process:
+- Processor: 'com.github.grahampugh.jamf-upload.processors/JamfPackageUploader'
+  Arguments:
+    pkg_category: 'TESTING'
+    predicate: '%UPDATE_PREDICATE'

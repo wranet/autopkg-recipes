@@ -1,0 +1,28 @@
+Description: Downloads the latest Apple Silicon version of Anki and repackages from DMG to PKG.
+Identifier: net.wra.technology.autopkg.download.Anki
+
+Input:
+  NAME: Anki
+  GITHUB_REPO: ankitects/anki
+  RELEASE_REGEX: .*apple.*
+MinimumVersion: '2.3'
+
+Process:
+- Processor: GitHubReleasesInfoProvider
+  Arguments:
+    github_repo: '%GITHUB_REPO%'
+    asset_regex: '%RELEASE_REGEX%'
+
+- Processor: URLDownloader
+  Arguments:
+    url:  '%url%'
+    filename: '%NAME%.dmg'
+
+- Processor: EndOfCheckPhase
+
+- Processor: CodeSignatureVerifier
+  Arguments:
+    input_path: '%pathname%/Anki.app'
+    requirement: 'identifier "net.ankiweb.dtop" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "7ZM8SLJM4P"'
+
+- Processor: AppPkgCreator
