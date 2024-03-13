@@ -11,6 +11,7 @@ Input:
   TESTING_GROUP_NAME: Testing
   POLICY_NAME: Install Latest %NAME%
   POLICY_TEMPLATE: JamfPolicyTemplate.xml
+  POLICY_CATEGORY: Testing
   SELF_SERVICE_DISPLAY_NAME: Install Latest %NAME%
   SELF_SERVICE_DESCRIPTION: Anki is a free and open-source flashcard program. It uses techniques from cognitive science such as active recall testing and spaced repetition to aid the user in memorization. The name comes from the Japanese word for "memorization".
   SELF_SERVICE_ICON: '%NAME%.png'
