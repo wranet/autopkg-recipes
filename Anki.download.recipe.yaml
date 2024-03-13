@@ -18,10 +18,6 @@ Process:
     url:  '%url%'
     filename: '%NAME%.dmg'
 
-- Processor: com.github.haircut.processors/AppIconExtractor
-  Arguments:
-    source_app: '%RECIPE_CACHE_DIR%/downloads/%NAME%.dmg'
-
 - Processor: EndOfCheckPhase
 
 - Processor: CodeSignatureVerifier
