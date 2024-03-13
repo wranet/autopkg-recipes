@@ -7,7 +7,7 @@ Input:
   NAME: Anki
   CATEGORY: Productivity
   GROUP_NAME: Anki-update-smart
-  GROUP_TEMPLATE: JamfSmartGroupUpdateTemplate.xml
+  GROUP_TEMPLATE: JamfSmartGroupTemplate.xml
   TESTING_GROUP_NAME: Testing
   POLICY_NAME: Install Latest %NAME%
   POLICY_TEMPLATE: JamfPolicyTemplate.xml
