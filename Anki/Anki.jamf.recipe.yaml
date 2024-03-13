@@ -5,10 +5,30 @@ MinumumVersion: '2.3'
 
 Input:
   NAME: Anki
+  CATEGORY: Productivity
+  GROUP_NAME: Anki-update-smart
+  GROUP_TEMPLATE: JamfSmartGroupTemplate.xml
+  TESTING_GROUP_NAME: Testing
+  POLICY_NAME: Install Latest %NAME%
+  POLICY_TEMPLATE: JamfPolicyTemplate.xml
+  SELF_SERVICE_DISPLAY_NAME: Install Latest %NAME%
+  SELF_SERVICE_DESCRIPTION: Anki is a free and open-source flashcard program. It uses techniques from cognitive science such as active recall testing and spaced repetition to aid the user in memorization. The name comes from the Japanese word for "memorization".
+  SELF_SERVICE_ICON: '%NAME%.png'
   UPDATE_PREDICATE: pkg_uploaded == False
 
 Process:
 - Processor: 'com.github.grahampugh.jamf-upload.processors/JamfPackageUploader'
   Arguments:
-    pkg_category: 'TESTING'
+    pkg_category: '%CATEGORY%'
     predicate: '%UPDATE_PREDICATE'
+
+- Processor: com.github.grahampugh.jamf-upload.processors/JamfComputerGroupUploader
+  Arguments:
+    computergroup_name: '%GROUP_NAME%'
+    computergroup_template: '%GROUP_TEMPLATE%'
+
+- Processor: com.github.grahampugh.jamf-upload.processors/JamfPolicyUploader
+  Arguments:
+    icon: '%SELF_SERVICE_ICON%'
+    policy_name: '%POLICY_NAME%'
+    policy_template: '%POLICY_TEMPLATE%'
