@@ -1,5 +1,5 @@
 Description: Downloads the latest version of Arduino for ARM.
-Identifier: net.wra.technology.autopkg.download.Ardunio
+Identifier: net.wra.technology.autopkg.download.Arduino
 MinimumVersion: "2.3"
 Input:
   NAME: Arduino
